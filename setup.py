@@ -7,13 +7,13 @@ import subprocess
 from setuptools import setup, find_packages
 
 NAME = 'pydroneapi'
-VERSION = '0.1.0'
+VERSION = '0.1.1'
 LICENSE = 'MIT'
 AUTHOR = 'Jelili Adebello'
 AUTHOR_EMAIL = 'jeliliadebello@gmail.com'
 DESCRIPTION = 'Helper scripts to manage Drone API operations'
 URL = 'https://github.com/bellyjay1005/pydroneci'
-DOWNLOAD_URL = 'https://github.com/bellyjay1005/pydroneci/archive/v_01.tar.gz'
+DOWNLOAD_URL = 'https://github.com/bellyjay1005/pydroneci/archive/refs/tags/v0.1.0.tar.gz'
 
 REQUIRES = [
     'boto3',
@@ -41,6 +41,8 @@ CLASSIFIERS = [
     'Operating System :: OS Independent',
 ]
 
+with open('README.md', 'r') as fh:
+    LONG_DESCRIPTION = fh.read()
 
 def has_ssh() -> bool:
     '''

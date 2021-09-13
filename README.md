@@ -2,9 +2,9 @@
 
 [![Run Python Tests](https://github.com/bellyjay1005/pydroneci/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/bellyjay1005/pydroneci/actions/workflows/ci.yml)
 
-Python client for Drone CI API.
+A DRONE CI Server - Python helper scripts to manage API interactions and operations.
 
-Manages authentication against Drone CI and performs common Drone CI API operations using a Python wrapper.
+This tool manages authentication against Drone CI and performs common Drone CI API operations using a Python wrapper.
 
 ## Prerequisites
 
