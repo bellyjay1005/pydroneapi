@@ -1,6 +1,7 @@
 # pydroneci
 
 [![Run Python Tests](https://github.com/bellyjay1005/pydroneci/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/bellyjay1005/pydroneci/actions/workflows/ci.yml)
+[![Push to PyPi](https://github.com/bellyjay1005/pydroneci/actions/workflows/pypi.yml/badge.svg)](https://github.com/bellyjay1005/pydroneci/actions/workflows/pypi.yml)
 
 A DRONE CI Server - Python helper scripts to manage API interactions and operations.
 
