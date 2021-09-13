@@ -1,5 +1,7 @@
 # pydroneci
 
+[![Run Python Tests](https://github.com/bellyjay1005/pydroneci/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/bellyjay1005/pydroneci/actions/workflows/ci.yml)
+
 Python client for Drone CI API.
 
 Manages authentication against Drone CI and performs common Drone CI API operations using a Python wrapper.
