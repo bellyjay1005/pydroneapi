@@ -22,7 +22,7 @@ python setup.py install
 From Github directly:
 
 ```
-pip3 install pydroneci@git+https://github.com/bellyjay1005/pydroneci
+pip3 install pydroneapi@git+https://github.com/bellyjay1005/pydroneci
 ```
 ## Usage
 
