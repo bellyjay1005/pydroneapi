@@ -30,7 +30,7 @@ class PyDroneAPI():
         '''
         Declare API variable
         '''
-        # If the token is not set, get token using boto3 client
+        # If the token is not set, get token from AWS using boto3 client
         self.host = drone_host
         self.repository = repo
         self.region = os.environ['AWS_DEFAULT_REGION']
