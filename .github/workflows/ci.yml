@@ -16,12 +16,17 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: 3.6
-      - name: Install dependencies
+      - name: Install Dependencies
         run: |
-          sudo apt-get -y install make
           python -m pip install --upgrade pip
           pip install .[dev]
-      - name: Run Linting with pylint
+      - name: Linting with pylint
         run: make lint
-      - name: Run Unit tests with pytest
+      - name: Unit Testing and Coverage with pytest
+        env:
+          AWS_DEFAULT_REGION: us-east-1
         run: make unit
+      - name: Security Linting with bandit
+        run: make security-lint
+      - name: Security Testing with safety
+        run: make cve-check
