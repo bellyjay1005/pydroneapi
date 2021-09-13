@@ -8,10 +8,12 @@ from setuptools import setup, find_packages
 
 NAME = 'pydroneapi'
 VERSION = '0.1.0'
+LICENSE = 'MIT'
 AUTHOR = 'Jelili Adebello'
 AUTHOR_EMAIL = 'jeliliadebello@gmail.com'
 DESCRIPTION = 'Helper scripts to manage Drone API operations'
 URL = 'https://github.com/bellyjay1005/pydroneci'
+DOWNLOAD_URL = 'https://github.com/bellyjay1005/pydroneci/archive/v_01.tar.gz'
 
 REQUIRES = [
     'boto3',
@@ -29,6 +31,16 @@ REQUIRES_TEST = [
 ]
 
 LONG_DESCRIPTION = 'A DRONE CI - Python helper scripts to manage API interactions and operations.'
+
+CLASSIFIERS = [
+    'Development Status :: 3 - Alpha',
+    'Intended Audience :: Developers',
+    'Topic :: Software Development :: Build Tools',
+    'License :: OSI Approved :: MIT License',
+    'Programming Language :: Python :: 3',
+    'Operating System :: OS Independent',
+]
+
 
 def has_ssh() -> bool:
     '''
@@ -62,10 +74,13 @@ def flip_ssh(requires: list) -> list:
 setup(
     name=NAME,
     version=VERSION,
+    license=LICENSE,
     author=AUTHOR,
     author_email=AUTHOR_EMAIL,
     description=DESCRIPTION,
+    download_url=DOWNLOAD_URL,
     long_description=LONG_DESCRIPTION,
+    classifiers=CLASSIFIERS,
     long_description_content_type="text/markdown",
     url=URL,
     packages=find_packages(exclude=("tests", "tests.*")),
@@ -73,5 +88,6 @@ setup(
     extras_require={
         'dev': flip_ssh(REQUIRES_TEST),
     },
-    include_package_data=True
+    include_package_data=True,
+    python_requires='>=3.6'
 )
