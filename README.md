@@ -2,6 +2,10 @@
 
 [![Run Python Tests](https://github.com/bellyjay1005/pydroneci/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/bellyjay1005/pydroneci/actions/workflows/ci.yml)
 [![Push to PyPi](https://github.com/bellyjay1005/pydroneci/actions/workflows/pypi.yml/badge.svg)](https://github.com/bellyjay1005/pydroneci/actions/workflows/pypi.yml)
+[![Latest Version](https://pypip.in/version/pydroneapi/badge.svg)](https://pypi.org/project/pydroneapi/)
+[![Download](https://pypip.in/download/pydroneapi/badge.svg)](https://pypi.org/project/pydroneapi/)
+[![Status](https://pypip.in/status/pydroneapi/badge.svg)](https://pypi.org/project/pydroneapi/)
+[![License](https://pypip.in/license/pydroneapi/badge.svg)](https://pypi.org/project/pydroneapi/)
 
 A DRONE CI Server - Python helper scripts to manage API interactions and operations.
 
