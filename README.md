@@ -18,6 +18,12 @@ This tool manages authentication against Drone CI and performs common Drone CI A
 
 ## Installation
 
+From PyPI:
+
+```
+pip install pydroneapi
+```
+
 From source:
 
 ```

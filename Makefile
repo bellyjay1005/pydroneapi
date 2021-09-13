@@ -71,6 +71,6 @@ endif
 	make $(CMD)lint
 	make $(CMD)security
 	make $(CMD)unit
-	make $(CMD)e2e
+#	make $(CMD)e2e
 
 .PHONY: develop test

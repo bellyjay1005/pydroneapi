@@ -18,7 +18,10 @@ jobs:
           python-version: 3.6
       - name: Install dependencies
         run: |
+          apt-get -y install make
           python -m pip install --upgrade pip
           pip install .[dev]
-      - name: Run tests with pytest
-        run: python -m pylint pydroneapi
+      - name: Run Linting with pylint
+        run: make lint
+      - name: Run Unit tests with pytest
+        run: make unit
