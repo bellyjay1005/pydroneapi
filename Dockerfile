@@ -26,6 +26,7 @@ FROM dependencies as test
 # Install drone
 RUN curl -L https://github.com/drone/drone-cli/releases/latest/download/drone_linux_amd64.tar.gz | tar zx
 RUN install -t /usr/local/bin drone
+COPY README.md .
 COPY setup.py .
 RUN --mount=type=ssh pip install .[dev]
 
