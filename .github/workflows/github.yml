@@ -24,6 +24,7 @@ jobs:
         name: Build Image
         env:
           IMAGE_NAME: pydroneapi
+          DOCKER_BUILDKIT: 1
         run: docker build . --file Dockerfile --tag $IMAGE_NAME --label "runnumber=${GITHUB_RUN_ID}"
       -
         name: Push Image to Github
