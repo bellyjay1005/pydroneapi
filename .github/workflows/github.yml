@@ -1,4 +1,4 @@
-name: Build and Push Image to Githug Registry
+name: Github Build and Push Image
 
 on:
   push:
