@@ -1,4 +1,4 @@
-# pydroneci
+# pydroneapi
 
 [![Run Python Tests](https://github.com/bellyjay1005/pydroneci/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/bellyjay1005/pydroneci/actions/workflows/ci.yml)
 [![Push to PyPi](https://github.com/bellyjay1005/pydroneci/actions/workflows/pypi.yml/badge.svg)](https://github.com/bellyjay1005/pydroneci/actions/workflows/pypi.yml)
@@ -27,7 +27,7 @@ pip install pydroneapi
 From source:
 
 ```
-git clone --recursive https://github.com/bellyjay1005/pydroneci
+git clone --recursive https://github.com/bellyjay1005/pydroneapi
 cd pydroneci
 python setup.py install
 ```
@@ -38,6 +38,8 @@ From Github directly:
 pip3 install pydroneapi@git+https://github.com/bellyjay1005/pydroneci
 ```
 ## Usage
+
+#### Example:
 
 ```python
 from pydroneapi import PyDroneAPI
@@ -58,4 +60,4 @@ if not sync_res[0]['id']:
 
 ## Development & Test
 
-Reference `make help` for more commands used for development and testing of source codes.
+Reference [make help](https://github.com/bellyjay1005/pydroneci/blob/main/Makefile) for more commands used for development and testing of source codes.
