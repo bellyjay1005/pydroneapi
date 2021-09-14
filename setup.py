@@ -7,7 +7,7 @@ import subprocess
 from setuptools import setup, find_packages
 
 NAME = 'pydroneapi'
-VERSION = '0.1.1'
+VERSION = '0.1.2'
 LICENSE = 'MIT'
 AUTHOR = 'Jelili Adebello'
 AUTHOR_EMAIL = 'jeliliadebello@gmail.com'
