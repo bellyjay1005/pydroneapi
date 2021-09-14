@@ -3,7 +3,6 @@
 [![Run Python Tests](https://github.com/bellyjay1005/pydroneci/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/bellyjay1005/pydroneci/actions/workflows/ci.yml)
 [![Push to PyPi](https://github.com/bellyjay1005/pydroneci/actions/workflows/pypi.yml/badge.svg)](https://github.com/bellyjay1005/pydroneci/actions/workflows/pypi.yml)
 [![Build and Push Docker Images](https://github.com/bellyjay1005/pydroneci/actions/workflows/docker.yml/badge.svg)](https://github.com/bellyjay1005/pydroneci/actions/workflows/docker.yml)
-
 [![Latest Version](https://pypip.in/version/pydroneapi/badge.svg)](https://pypi.org/project/pydroneapi/)
 [![Download](https://pypip.in/download/pydroneapi/badge.svg)](https://pypi.org/project/pydroneapi/)
 [![Status](https://pypip.in/status/pydroneapi/badge.svg)](https://pypi.org/project/pydroneapi/)
