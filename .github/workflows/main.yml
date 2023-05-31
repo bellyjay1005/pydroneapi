@@ -26,6 +26,7 @@ jobs:
   auto-release: 
     if: |
       github.event_name == 'push'
+    needs: [tests]
     # needs: [docker-image-push, github-image-push]
     uses: ./.github/workflows/release.yml
   
