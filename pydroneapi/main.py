@@ -64,7 +64,7 @@ class PyDroneAPI():
         '''
         LOGGER.info('Registering repository with Drone CI')
         activate_url = f'{self.host}/api/repos/{self.repository}'
-        response = requests.post(activate_url, headers=self.header, timeout=30))
+        response = requests.post(activate_url, headers=self.header, timeout=30)
         json_response = response.json()
         return json_response
 
