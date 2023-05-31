@@ -25,7 +25,7 @@ jobs:
 
   auto-release: 
     if: |
-      github.event_name == 'push' && startsWith(github.event.ref, 'refs/branch/main')
+      github.event_name == 'push'
     needs: [docker-image-push, github-image-push]
     uses: ./.github/workflows/release.yml
   
