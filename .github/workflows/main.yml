@@ -23,8 +23,16 @@ jobs:
     if: github.event_name == 'push'
     needs: [tests]
     uses: ./.github/workflows/github.yml
+
+  github-release: 
+    - name: Bump version and push tag
+      uses: anothrNick/github-tag-action@1.64.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        DEFAULT_BUMP: minor
+        WITH_V: true
   
-  # github-release:
+
     # if: startsWith(github.event.ref, 'refs/tags/v')
     # needs: [docker-image-push, github-image-push]
     # uses: ./.github/workflows/release.yml
