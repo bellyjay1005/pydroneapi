@@ -24,12 +24,12 @@ jobs:
     needs: [tests]
     uses: ./.github/workflows/github.yml
   
-  github-release:
-    if: startsWith(github.event.ref, 'refs/tags/v')
-    needs: [docker-image-push, github-image-push]
-    uses: ./.github/workflows/release.yml
+  # github-release:
+    # if: startsWith(github.event.ref, 'refs/tags/v')
+    # needs: [docker-image-push, github-image-push]
+    # uses: ./.github/workflows/release.yml
   
-  deploy-to-pypi:
-    if: startsWith(github.event.ref, 'refs/tags/v')
-    needs: [github-release]
-    uses: ./.github/workflows/pypi.yml
+  # deploy-to-pypi:
+    # if: startsWith(github.event.ref, 'refs/tags/v')
+    # needs: [github-release]
+    # uses: ./.github/workflows/pypi.yml
