@@ -1,0 +1,33 @@
+name: Main
+
+on:
+  pull_request:
+  pull_request_target:
+  push:
+    branches:
+      - main
+    tags: ['v*.*.*']
+
+jobs:
+  tests:
+    if: |
+      github.event_name == 'pull_request_target' || github.event_name != 'pull_request_target'
+    uses: ./.github/workflows/ci.yml
+  
+  docker-image-push:
+    if: github.event_name == 'push'
+    needs: [tests]
+    uses: ./.github/workflows/docker.yml
+    secrets:
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+  
+  github-image-push:
+    if: github.event_name == 'push'
+    needs: [tests]
+    uses: ./.github/workflows/github.yml
+  
+  github-release:
+    if: startsWith(github.event.ref, 'refs/tags/v')
+    needs: [docker-image-push, github-image-push]
+    uses: ./.github/workflows/release.yml

@@ -1,11 +1,15 @@
 name: Docker Build and Push Image
 
 on:
+  workflow_call:
+    secrets:
+      DOCKERHUB_USERNAME:
+        required: true
+      DOCKERHUB_TOKEN:
+        required: true
   push:
     branches:
       - main
-    tags:
-      - v*
 
 jobs:
   docker:

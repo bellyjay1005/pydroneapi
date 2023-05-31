@@ -28,6 +28,7 @@ REQUIRES_TEST = [
     'bandit>=1.6.2',
     'safety>=1.10.3',
     'requests_mock',
+    'setuptools>=67.8.0'
 ]
 
 LONG_DESCRIPTION = 'A DRONE CI - Python helper scripts to manage API interactions and operations.'

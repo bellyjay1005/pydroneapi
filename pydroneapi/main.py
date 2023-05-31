@@ -54,7 +54,7 @@ class PyDroneAPI():
         '''
         LOGGER.info('Synchronizing latest repository list')
         sync_url = f'{self.host}/api/user/repos'
-        response = requests.post(sync_url, headers=self.header)
+        response = requests.post(sync_url, headers=self.header, timeout=30)
         json_response = response.json()
         return json_response
 
@@ -64,7 +64,7 @@ class PyDroneAPI():
         '''
         LOGGER.info('Registering repository with Drone CI')
         activate_url = f'{self.host}/api/repos/{self.repository}'
-        response = requests.post(activate_url, headers=self.header)
+        response = requests.post(activate_url, headers=self.header, timeout=30)
         json_response = response.json()
         return json_response
 
@@ -74,7 +74,7 @@ class PyDroneAPI():
         '''
         LOGGER.info('Starting a new build using the latest commit')
         create_build_url = f'{self.host}/api/repos/{self.repository}/builds?branch={branch}'
-        response = requests.post(create_build_url, headers=self.header)
+        response = requests.post(create_build_url, headers=self.header, timeout=30)
         build_info = response.json()
         return build_info['status']
 
@@ -96,7 +96,7 @@ class PyDroneAPI():
         LOGGER.info('Starting a new build using the latest commit')
         url_string = urlencode(params)
         create_build_url = f'{self.host}/api/repos/{self.repository}/builds?branch={branch}&{url_string}' # pylint: disable=line-too-long
-        response = requests.post(create_build_url, headers=self.header)
+        response = requests.post(create_build_url, headers=self.header, timeout=30)
         build_info = response.json()
         return build_info
 
@@ -107,7 +107,7 @@ class PyDroneAPI():
         build_ids = []
         LOGGER.info('Getting list of deployed build ids')
         builds_url = f'{self.host}/api/repos/{self.repository}/builds'
-        response = requests.get(builds_url, headers=self.header)
+        response = requests.get(builds_url, headers=self.header, timeout=30)
         LOGGER.info('Response - %s', response)
         json_response = response.json()
         for build in json_response:
@@ -121,7 +121,7 @@ class PyDroneAPI():
         '''
         LOGGER.info('Getting build info for repository - %s', self.repository)
         get_url = f'{self.host}/api/repos/{self.repository}/builds/{build_number[0]}'
-        response = requests.get(get_url, headers=self.header)
+        response = requests.get(get_url, headers=self.header, timeout=30)
         return response.status_code
 
     def get_build_content(self, build_number):
@@ -130,7 +130,7 @@ class PyDroneAPI():
         '''
         LOGGER.info('Getting build event contents for - %s', self.repository)
         content_url = f'{self.host}/api/repos/{self.repository}/builds/{build_number[0]}'
-        response = requests.get(content_url, headers=self.header)
+        response = requests.get(content_url, headers=self.header, timeout=30)
         return response.json()
 
     def get_drone_build_status(self, build_number):
@@ -139,7 +139,7 @@ class PyDroneAPI():
         '''
         LOGGER.info('Getting build event info for build id =  %s', build_number[0])
         build_url = f'{self.host}/api/repos/{self.repository}/builds/{build_number[0]}'
-        response = requests.get(build_url, headers=self.header)
+        response = requests.get(build_url, headers=self.header, timeout=30)
         json_response = response.json()
         return json_response['status']
 
@@ -149,7 +149,7 @@ class PyDroneAPI():
         '''
         LOGGER.info('Stopping target build job for build id =  %s', build_number[0])
         delete_url = f'{self.host}/api/repos/{self.repository}/builds/{build_number[0]}'
-        requests.delete(delete_url, headers=self.header)
+        requests.delete(delete_url, headers=self.header, timeout=30)
         return True
 
     def restart_drone_build_job(self, build_number):
@@ -158,6 +158,6 @@ class PyDroneAPI():
         '''
         LOGGER.info('Restarting target build job for build id =  %s', build_number[0])
         restart_url = f'{self.host}/api/repos/{self.repository}/builds/{build_number[0]}'
-        response = requests.post(restart_url, headers=self.header)
+        response = requests.post(restart_url, headers=self.header, timeout=30)
         json_response = response.json()
         return json_response
