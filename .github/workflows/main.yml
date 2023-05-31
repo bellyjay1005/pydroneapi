@@ -10,23 +10,23 @@ jobs:
   tests:
     uses: ./.github/workflows/ci.yml
   
-  docker-image-push:
-    if: github.event_name == 'push'
-    needs: [tests]
-    uses: ./.github/workflows/docker.yml
-    secrets:
-      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+  # docker-image-push:
+  #   if: github.event_name == 'push'
+  #   needs: [tests]
+  #   uses: ./.github/workflows/docker.yml
+  #   secrets:
+  #     DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+  #     DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
   
-  github-image-push:
-    if: github.event_name == 'push'
-    needs: [tests]
-    uses: ./.github/workflows/github.yml
+  # github-image-push:
+  #   if: github.event_name == 'push'
+  #   needs: [tests]
+  #   uses: ./.github/workflows/github.yml
 
   auto-release: 
     if: |
       github.event_name == 'push'
-    needs: [docker-image-push, github-image-push]
+    # needs: [docker-image-push, github-image-push]
     uses: ./.github/workflows/release.yml
   
   # git-release:
