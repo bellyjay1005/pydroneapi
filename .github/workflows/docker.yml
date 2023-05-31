@@ -7,9 +7,6 @@ on:
         required: true
       DOCKERHUB_TOKEN:
         required: true
-  push:
-    branches:
-      - main
 
 jobs:
   docker:
