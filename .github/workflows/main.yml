@@ -28,5 +28,6 @@ jobs:
     uses: ./.github/workflows/github.yml
   
   github-release:
+    if: startsWith(github.event.ref, 'refs/tags/v')
     needs: [docker-image-push, github-image-push]
     uses: ./.github/workflows/release.yml
