@@ -15,6 +15,7 @@ jobs:
     uses: ./.github/workflows/ci.yml
   
   docker-image-push:
+    if: github.event_name == 'push'
     needs: [tests]
     uses: ./.github/workflows/docker.yml
     secrets:
@@ -22,8 +23,7 @@ jobs:
       DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
   
   github-image-push:
-    if: |
-      github.event_name == 'pull_request_target' || github.event_name != 'pull_request_target'
+    if: github.event_name == 'push'
     needs: [tests]
     uses: ./.github/workflows/github.yml
   
