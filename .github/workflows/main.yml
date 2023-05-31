@@ -5,7 +5,6 @@ on:
   push:
     branches:
       - main
-    tags: ['v*.*.*']
 
 jobs:
   tests:
@@ -24,16 +23,13 @@ jobs:
     needs: [tests]
     uses: ./.github/workflows/github.yml
 
-  bump-release-version: 
-    if: github.event_name == 'push'
+  auto-release: 
+    if: |
+      github.event_name == 'push' && startsWith(github.event.ref, 'refs/branch/main')
     needs: [docker-image-push, github-image-push]
-    uses: anothrNick/github-tag-action@1.64.0
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      DEFAULT_BUMP: minor
-      WITH_V: true
+    uses: ./.github/workflows/release.yml
   
-
+  # git-release:
     # if: startsWith(github.event.ref, 'refs/tags/v')
     # needs: [docker-image-push, github-image-push]
     # uses: ./.github/workflows/release.yml
