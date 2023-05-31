@@ -31,5 +31,5 @@ jobs:
   
   deploy-to-pypi:
     if: startsWith(github.event.ref, 'refs/tags/v')
-    needs: [docker-release]
+    needs: [github-release]
     uses: ./.github/workflows/pypi.yml
