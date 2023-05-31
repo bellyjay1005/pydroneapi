@@ -2,7 +2,6 @@ name: Main
 
 on:
   pull_request:
-  pull_request_target:
   push:
     branches:
       - main
@@ -10,8 +9,6 @@ on:
 
 jobs:
   tests:
-    if: |
-      github.event_name == 'pull_request_target' || github.event_name != 'pull_request_target'
     uses: ./.github/workflows/ci.yml
   
   docker-image-push:
@@ -31,3 +28,8 @@ jobs:
     if: startsWith(github.event.ref, 'refs/tags/v')
     needs: [docker-image-push, github-image-push]
     uses: ./.github/workflows/release.yml
+  
+  deploy-to-pypi:
+    if: startsWith(github.event.ref, 'refs/tags/v')
+    needs: [github-release]
+    uses: ./.github/workflows/pypi.yml

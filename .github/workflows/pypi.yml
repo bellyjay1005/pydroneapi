@@ -1,8 +1,7 @@
 name: Push to PyPi
 
 on:
-  release:
-    types: [published]
+  workflow_call:
 
 jobs:
   build:
