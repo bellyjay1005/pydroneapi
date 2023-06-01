@@ -2,12 +2,21 @@ name: Release
 
 on:
   workflow_dispatch:
-    secrets:
-      REPO_GITHUB_TOKEN:
+    inputs:
+      semver_scheme:
         type: string
-        description: github PAT
-        required: true
-        default: ${{ secrets.GITHUB_TOKEN }}
+        description: semantic versioning scheme
+        require: true
+        options:
+          - major
+          - minor
+          -patch
+    # secrets:
+    #   REPO_GITHUB_TOKEN:
+    #     type: string
+    #     description: github PAT
+    #     required: true
+    #     default: ${{ secrets.GITHUB_TOKEN }}
   
 jobs:
   git-release:
@@ -24,7 +33,7 @@ jobs:
         id: build_changelog
         uses: mikepenz/release-changelog-builder-action@v3
         env:
-          GITHUB_TOKEN: ${{ secrets.REPO_GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           configurationJson: |
             {
@@ -53,7 +62,7 @@ jobs:
         id: bump_version   
         uses: anothrNick/github-tag-action@1.64.0
         env:
-          GITHUB_TOKEN: ${{ secrets.REPO_GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BUMP: patch
           WITH_V: true
 
@@ -64,7 +73,7 @@ jobs:
           tag_name: ${{ steps.bump_version.outputs.new_tag }}
           release_name: ${{ steps.bump_version.outputs.new_tag }}
           body: ${{ steps.build_changelog.outputs.changelog }}
-          token: ${{ secrets.REPO_GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           draft: false
           prerelease: false
 
