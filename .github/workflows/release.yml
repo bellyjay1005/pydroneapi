@@ -6,6 +6,8 @@ on:
 jobs:
   git-release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -28,13 +30,12 @@ jobs:
 
       - name: Create release
         id: create_release
-        uses: actions/create-release@latest
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ steps.bump_version.outputs.new_tag }}
           release_name: ${{ steps.bump_version.outputs.new_tag }}
           body: ${{ steps.build_changelog.outputs.changelog }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           draft: false
           prerelease: false
 
