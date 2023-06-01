@@ -10,7 +10,7 @@ on:
         options:
           - major
           - minor
-          -patch
+          - patch
     # secrets:
     #   REPO_GITHUB_TOKEN:
     #     type: string
