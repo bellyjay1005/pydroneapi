@@ -10,30 +10,24 @@ jobs:
   tests:
     uses: ./.github/workflows/ci.yml
   
-  # docker-image-push:
-  #   if: github.event_name == 'push'
-  #   needs: [tests]
-  #   uses: ./.github/workflows/docker.yml
-  #   secrets:
-  #     DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-  #     DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
-  
-  # github-image-push:
-  #   if: github.event_name == 'push'
-  #   needs: [tests]
-  #   uses: ./.github/workflows/github.yml
-
-  auto-release: 
-    if: |
-      github.event_name == 'push'
+  docker-image-push:
+    if: github.event_name == 'push'
     needs: [tests]
-    # needs: [docker-image-push, github-image-push]
-    uses: ./.github/workflows/release.yml
+    uses: ./.github/workflows/docker.yml
+    secrets:
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
   
-  # git-release:
-    # if: startsWith(github.event.ref, 'refs/tags/v')
-    # needs: [docker-image-push, github-image-push]
-    # uses: ./.github/workflows/release.yml
+  github-image-push:
+    if: github.event_name == 'push'
+    needs: [tests]
+    uses: ./.github/workflows/github.yml
+
+  # auto-release: 
+  #   if: |
+  #     github.event_name == 'push'
+  #   needs: [docker-image-push, github-image-push]
+  #   uses: ./.github/workflows/release.yml
   
   # deploy-to-pypi:
     # if: startsWith(github.event.ref, 'refs/tags/v')
