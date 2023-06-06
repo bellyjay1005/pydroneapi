@@ -41,7 +41,7 @@ jobs:
           TARGET_FILE: ./tests/features/values.yml
         run: |
           make install-yq
-          CURRENT_VERSION=$(yq -r '$(SERVICE_VERSION_VAR)' $(TARGET_FILE))
+          CURRENT_VERSION=$(yq '$(SERVICE_VERSION_VAR)' $(TARGET_FILE))
           NEW_VERSION= $(echo "${CURRENT_VERSION}" | awk -F. '{$NF = $NF + 1;} 1' | sed 's/ /./g')
           echo THIS IS THE NEW CHART VERSION = $NEW_VERSION
           make bump-version TARGET_VARIABLE=$SERVICE_VERSION_VAR INPUT_VALUE=$NEW_VERSION TARGET_FILE=$TARGET_FILE
