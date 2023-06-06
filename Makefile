@@ -83,7 +83,5 @@ install-yq:
 
 bump-version: ## Run a version bump using yq util
 	yq e -i '.$(TARGET_VARIABLE) = "$(NEW_VERSION)"' $(TARGET_FILE)
-# CURRENT_VERSION=$(yq -r '$(TARGET_VARIABLE)' $(TARGET_FILE))
-# NEW_VERSION= $(echo "${CURRENT_VERSION}" | awk -F. '{$NF = $NF + 1;} 1' | sed 's/ /./g')
 
 .PHONY: develop test
