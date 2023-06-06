@@ -38,7 +38,7 @@ jobs:
         env:
           SERVICE_VERSION_VAR: "service.appVersion"
           IMAGE_TAG_VERSION_VAR: "service.image.tag"
-          TARGET_FILE: tests/features/values.yml
+          TARGET_FILE: ./tests/features/values.yml
         run: |
           make install-yq
           CURRENT_VERSION=$(yq -r '$(TARGET_VARIABLE)' $(TARGET_FILE))
