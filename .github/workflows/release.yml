@@ -3,21 +3,10 @@ name: Release
 on:
   workflow_dispatch:
     inputs:
-      semver_scheme:
+      semver_number:
         type: string
-        description: semantic versioning scheme
+        description: semantic versioning number i.e 0.1.2
         require: true
-        default: patch
-        options:
-          - major
-          - minor
-          - patch
-    # secrets:
-    #   REPO_GITHUB_TOKEN:
-    #     type: string
-    #     description: github PAT
-    #     required: true
-    #     default: ${{ secrets.GITHUB_TOKEN }}
   
 jobs:
   git-release:
@@ -59,29 +48,13 @@ jobs:
               ]
             }
 
-      - name: Bump version and push tag  
-        id: bump_version   
-        uses: anothrNick/github-tag-action@1.64.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DEFAULT_BUMP: patch
-          WITH_V: true
-
       - name: Create release
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ steps.bump_version.outputs.new_tag }}
-          release_name: ${{ steps.bump_version.outputs.new_tag }}
+          tag_name: v${{ input.semver_number }}
+          release_name: v${{ input.semver_number }}
           body: ${{ steps.build_changelog.outputs.changelog }}
           token: ${{ secrets.GITHUB_TOKEN }}
           draft: false
           prerelease: false
-
-      # - name: Create release
-      #   id: create_release
-      #   uses: "marvinpinto/action-automatic-releases@latest"
-      #   with:
-      #     repo_token: "${{ secrets.GITHUB_TOKEN }}"
-      #     automatic_release_tag: ${{ steps.bump_version.outputs.new_tag }}
-      #     prerelease: false

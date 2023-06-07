@@ -5,6 +5,9 @@ IMAGE_NAME=pydroneapi
 PROJECT=$(IMAGE_NAME)
 VERSION?=latest
 ANCHORE_ENGINE_URL?=https://ci-tools.anchore.io/inline_scan-latest
+TARGET_VARIABLE?=
+TARGET_FILE?=
+NEW_VERSION?=
 
 .DEFAULT_GOAL:=help
 
@@ -72,5 +75,13 @@ endif
 	make $(CMD)security
 	make $(CMD)unit
 #	make $(CMD)e2e
+
+ubuntu/install-yq:
+	@sudo add-apt-repository ppa:rmescandon/yq
+	@sudo apt update
+	@sudo apt install yq -y
+
+bump-version: ## Run a version bump using yq util
+	yq e -i '.$(TARGET_VARIABLE) = "$(NEW_VERSION)"' $(TARGET_FILE)
 
 .PHONY: develop test
