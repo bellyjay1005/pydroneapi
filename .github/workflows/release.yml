@@ -5,7 +5,7 @@ on:
     inputs:
       semver_number:
         type: string
-        description: semantic versioning number i.e 0.1.7
+        description: semantic versioning number i.e 0.1.2
         require: true
   
 jobs:
