@@ -44,6 +44,10 @@ jobs:
                 {
                   "title": "## 📦 Dependencies",
                   "labels": ["dependencies"]
+                },
+                {
+                  "title": "## 🚀🚀 Auto-Release",
+                  "labels": ["auto-release"]
                 }
               ]
             }
