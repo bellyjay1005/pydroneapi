@@ -52,8 +52,8 @@ jobs:
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: v${{ input.semver_number }}
-          release_name: v${{ input.semver_number }}
+          tag_name: v"${{ input.semver_number }}"
+          release_name: v"${{ input.semver_number }}"
           body: ${{ steps.build_changelog.outputs.changelog }}
           token: ${{ secrets.GITHUB_TOKEN }}
           draft: false
